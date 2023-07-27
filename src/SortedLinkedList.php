@@ -46,7 +46,7 @@ final class SortedLinkedList implements LinkedList
         $this->size++;
     }
 
-    public function remove(int|string $value): void
+    public function remove(int|string $value, bool $onlyFirst = false): void
     {
         if ($this->head === null || $this->type !== gettype($value)) {
             return;
@@ -62,28 +62,14 @@ final class SortedLinkedList implements LinkedList
                     $previous->setNext($current->getNext());
                 }
                 $this->size--;
+                if ($onlyFirst) {
+                    return;
+                }
             } else {
                 $previous = $current;
             }
             $current = $current->getNext();
         }
-    }
-
-    public function contains(int|string $value): bool
-    {
-        if ($this->head === null || $this->type !== gettype($value)) {
-            return false;
-        }
-
-        $current = $this->head;
-        do {
-            if ($current->getValue() === $value) {
-                return true;
-            }
-            $current = $current->getNext();
-        } while ($current !== null);
-
-        return false;
     }
 
     public function findFirst(int|string $value): ?int

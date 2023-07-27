@@ -12,15 +12,13 @@ interface LinkedList extends Countable, IteratorAggregate
     /**
      * @throws Exception\InvalidTypeException
      */
-    public function add(int $value): void;
+    public function add(int|string $value): void;
 
-    public function remove(int $value): void;
-
-    public function contains(int $value): bool;
+    public function remove(int|string $value): void;
 
     public function findFirst(int|string $value): ?int;
 
-    public function findAll(int $value): array;
+    public function findAll(int|string $value): array;
 
     /**
      * @throws Exception\IndexOutOfBoundsException
