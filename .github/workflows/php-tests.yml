@@ -1,0 +1,12 @@
+name: Sorted Linked List CI
+on: [ push, pull_request ]
+jobs:
+  PHPUnit-Tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout the repository"
+        uses: actions/checkout@v4
+      - name: "Install dependencies"
+        uses: php-actions/composer@v6
+      - name: "Run phpunit"
+        uses: php-actions/phpunit@v3
